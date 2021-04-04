@@ -1,6 +1,7 @@
 # GGN
 
-ggn is an experimental meta build tool for the google gn build system.
+ggn is an experimental meta build tool for the google gn build system. 
+ggn stands for "generate gn" which fully expands to "generate generate ninja" 
 
 WORK IN PROGRESS
 
