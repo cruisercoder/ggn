@@ -1,0 +1,22 @@
+#!/bin/bash -ex
+
+LOCAL=$HOME/.local
+INSTALL=$LOCAL/install
+BIN=$LOCAL/bin
+UNAME=`uname`
+CC=`which gcc`
+CXX=`which g++`
+AR=`which ar`
+
+mkdir -p $BIN
+mkdir -p $INSTALL
+
+cd $INSTALL
+git clone https://gn.googlesource.com/gn
+cd gn
+python build/gen.py
+ninja -C out
+
+cp out/gn $BIN
+rm -rf $INSTALL/gn
+
