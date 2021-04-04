@@ -1,7 +1,8 @@
 #!/bin/bash -ex
 
 LOCAL=$HOME/.local
-INSTALL=$LOCAL/install
+NAME=gn
+INSTALL=$LOCAL/install/$NAME
 BIN=$LOCAL/bin
 UNAME=`uname`
 CC=`which gcc`
@@ -9,14 +10,13 @@ CXX=`which g++`
 AR=`which ar`
 
 mkdir -p $BIN
-mkdir -p $INSTALL
+rm -rf $INSTALL && mkdir -p $INSTALL
 
+git clone https://gn.googlesource.com/gn $INSTALL
 cd $INSTALL
-git clone https://gn.googlesource.com/gn
-cd gn
 python build/gen.py
 ninja -C out
 
 cp out/gn $BIN
-rm -rf $INSTALL/gn
+rm -rf $INSTALL
 
