@@ -9,7 +9,7 @@ WORK IN PROGRESS
 install gn in $HOME/.local
 
 ```bash
-mkdir -p ~/src && && git clone https://github.com/cruisercoder/ggn.git ~/src && ~/src/ggn//install
+git clone https://github.com/cruisercoder/ggn.git ~/src/ggn && ~/src/ggn/install
 ```
 
 # add the local bin directory to your path (~/.bashrc, etc)
