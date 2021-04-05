@@ -97,11 +97,11 @@ echo -e 'group("top") {deps = ["//proj1"]}' | gn format --stdin > $PROJECT/BUILD
 cd $PROJECT
 ```
 
-Set up an out directory for regular debugging. This is done once for each out diretory (out/debug, out/release, etc). The
+Set up an out directory for debugging. This is done once for each out diretory (out/debug, out/release, etc). The
 settings can be changed in the out/debug/args.gn file.
 
 ```bash
-gn gen out/debug --args='enable_debug=true enable_symbols=true'
+gn gen out/debug --args='enable_debug=true enable_symbols=true enable_asan=true'
 ```
 
 Build everything. 

@@ -17,6 +17,7 @@ config("compiler_defaults") {
 
 config("settings") {
   cflags = []
+  ldflags = []
   if (!enable_debug) {
     cflags += [ "-DNDEBUG" ]
   }
@@ -26,5 +27,13 @@ config("settings") {
   if (enable_symbols) {
     cflags += [ "-g" ]
   }
+  if (enable_asan) {
+    cflags += [
+      "-fsanitize=address",
+      "-fno-omit-frame-pointer",
+    ]
+    ldflags += [
+      "-fsanitize=address",
+    ]
+  }
 }
-
