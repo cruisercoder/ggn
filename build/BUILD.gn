@@ -1,0 +1,30 @@
+config("compiler_defaults") {
+  include_dirs = []
+  ldflags = []
+
+  cflags_cc = [
+    "-std=c++2a",
+    "-Wall",
+  ]
+
+  if (current_os == "linux") {
+    ldflags += [
+      "-Wl,-rpath,\$ORIGIN/../lib",
+      "-Wl,-z,origin",
+    ]
+  }
+}
+
+config("settings") {
+  cflags = []
+  if (!enable_debug) {
+    cflags += [ "-DNDEBUG" ]
+  }
+  if (enable_opt) {
+    cflags += [ "-O3" ]
+  }
+  if (enable_symbols) {
+    cflags += [ "-g" ]
+  }
+}
+

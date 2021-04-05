@@ -1,0 +1,4 @@
+binary("tool") {
+  deps = [ "//example1/util" ]
+  sources = [ "tool.cc" ]
+}

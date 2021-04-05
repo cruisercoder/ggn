@@ -1,0 +1,23 @@
+template("component") {
+  name = target_name
+
+  config("${name}_config") {
+    include_dirs = [ "." ]
+    if (defined(invoker.include_dirs)) {
+      include_dirs += invoker.include_dirs
+    }
+  }
+
+  _component_mode = "source_set"
+
+  target(_component_mode, "${name}") {
+    all_dependent_configs = [ ":${name}_config" ]
+
+    forward_variables_from(invoker, [ "visibility" ])
+    forward_variables_from(invoker, "*", [ "visibility" ])
+
+    if (!defined(deps)) {
+      deps = []
+    }
+  }
+}

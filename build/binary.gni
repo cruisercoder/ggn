@@ -1,0 +1,23 @@
+template("binary") {
+  name = target_name
+
+  executable(name) {
+    deps = []
+    include_dirs = [ "." ]
+    sources = []
+
+    if (defined(invoker.output_name)) {
+      output_name = invoker.output_name
+    } else {
+      output_name = name
+    }
+
+    if (defined(invoker.deps)) {
+      deps += invoker.deps
+    }
+
+    if (defined(invoker.sources)) {
+      sources += invoker.sources
+    }
+  }
+}

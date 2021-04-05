@@ -1,0 +1,4 @@
+component("util") {
+  sources = [ "util.cc" ]
+}
+
